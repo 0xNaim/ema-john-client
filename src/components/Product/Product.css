@@ -1,0 +1,19 @@
+.product {
+  display: flex;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 5px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+}
+.product img {
+  margin-right: 20px;
+}
+.product button {
+  width: 170px;
+  background-color: orange;
+  border: 1px solid lightgray;
+  font-weight: bold;
+  padding: 5px 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
