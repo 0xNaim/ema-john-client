@@ -16,11 +16,11 @@ const Product = (props) => {
           <Link to={"/product/" + key}>{name}</Link>
         </h3>
         <p>
-          <small>by: {seller}</small>
+          <small>By {seller}</small>
         </p>
-        <h4>${price}</h4>
+        <h3>${price}</h3>
         <p>
-          <small>only {stock} left in stock</small>
+          <small>Only {stock} left in stock</small>
         </p>
         {props.showAddToCart && (
           <button className="myBtn" onClick={() => props.handleAddProduct(props.product)}>

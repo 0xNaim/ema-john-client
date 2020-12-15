@@ -1,11 +1,7 @@
 .review-item {
   display: flex;
   border-bottom: 1px solid lightgray;
-  margin-left: 5%;
-  padding-right: 10px;
-  width: 75%;
-  margin-right: 5px;
-  border-right: 1px solid lightgray;
+  padding-bottom: 15px;
 }
 .review-item-container {
   display: flex;
