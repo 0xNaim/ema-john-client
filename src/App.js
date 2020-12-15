@@ -13,13 +13,13 @@ function App() {
       <Header></Header>
       <Router>
         <Switch>
-          <Route path="/shop">
+          <Route exact path="/shop">
             <Shop />
           </Route>
-          <Route path="/review">
+          <Route exact path="/review">
             <Review />
           </Route>
-          <Route path="/inventory">
+          <Route exact path="/inventory">
             <Inventory />
           </Route>
           <Router exact path="/">
@@ -29,7 +29,7 @@ function App() {
             <ProductDetail />
           </Route>
           <Route path="*">
-            <NotFound></NotFound>
+            <NotFound />
           </Route>
         </Switch>
       </Router>
