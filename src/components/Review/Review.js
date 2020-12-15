@@ -38,7 +38,7 @@ const Review = () => {
   let thankYou;
   if (orderPlaced) {
     // thankYou = <img src={happyImg} alt="" />;
-    thankYou = <h2>Congratulations! Your order has been placed</h2>;
+    thankYou = <h2>Congratulations! Your order has been placed.</h2>;
   }
   return (
     <div className="twin-container">
@@ -50,11 +50,10 @@ const Review = () => {
             removeProduct={removeProduct}
           ></ReviewItem>
         ))}
-        <br/>
-        <br/>
-        <br/>
+
         {thankYou}
       </div>
+
       <div className="cart-container">
         <Cart cart={cart}>
           <button onClick={placeOrder} className="myBtn">
