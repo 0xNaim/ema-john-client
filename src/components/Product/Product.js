@@ -16,7 +16,7 @@ const Product = (props) => {
           <Link to={"/product/" + key}>{name}</Link>
         </h3>
         <p>
-          <small>By: {seller}</small>
+          <small>By {seller}</small>
         </p>
         <h3>${price}</h3>
         <p>

@@ -15,7 +15,7 @@ const ReviewItem = (props) => {
             <a href="">{name}</a>
           </h3>
           <h3>${price}</h3>
-          <p><small>By: {seller}</small></p>
+          <p><small>By {seller}</small></p>
           <p>Quantity: {quantity}</p>
           <br />
           <button onClick={() => removeProduct(key)} className="myBtn">

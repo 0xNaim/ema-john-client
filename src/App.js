@@ -14,19 +14,19 @@ function App() {
       <Router>
         <Switch>
           <Route path="/shop">
-            <Shop></Shop>
+            <Shop />
           </Route>
           <Route path="/review">
-            <Review></Review>
+            <Review />
           </Route>
           <Route path="/inventory">
-            <Inventory></Inventory>
+            <Inventory />
           </Route>
           <Router exact path="/">
-            <Shop></Shop>
+            <Shop />
           </Router>
           <Route path="/product/:productKey">
-            <ProductDetail></ProductDetail>
+            <ProductDetail />
           </Route>
           <Route path="*">
             <NotFound></NotFound>
