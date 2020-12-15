@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import fakeData from "../../fakeData";
 import {
   addToDatabaseCart,
@@ -55,7 +56,11 @@ const Shop = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart}>
+          <Link to="/review">
+            <button className="myBtn">Review Order</button>
+          </Link>
+        </Cart>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import fakeData from "../../fakeData";
 import {
   getDatabaseCart,
+  processOrder,
   removeFromDatabaseCart,
 } from "../../utilities/databaseManager";
 import Cart from "../Cart/Cart";
@@ -9,6 +10,14 @@ import ReviewItem from "../ReviewItem/ReviewItem";
 
 const Review = () => {
   const [cart, setCart] = useState([]);
+  const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const placeOrder = () => {
+    setCart([]);
+    setOrderPlaced(true);
+    processOrder();
+  };
+
   const removeProduct = (productKey) => {
     const newCart = cart.filter((pd) => pd.key !== productKey);
     setCart(newCart);
@@ -25,6 +34,12 @@ const Review = () => {
     });
     setCart(cartProducts);
   }, []);
+
+  let thankYou;
+  if (orderPlaced) {
+    // thankYou = <img src={happyImg} alt="" />;
+    thankYou = <h2>Congratulations! Your order has been placed</h2>;
+  }
   return (
     <div className="twin-container">
       <div className="product-container">
@@ -35,9 +50,17 @@ const Review = () => {
             removeProduct={removeProduct}
           ></ReviewItem>
         ))}
+        <br/>
+        <br/>
+        <br/>
+        {thankYou}
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart}>
+          <button onClick={placeOrder} className="myBtn">
+            Place Order
+          </button>
+        </Cart>
       </div>
     </div>
   );
