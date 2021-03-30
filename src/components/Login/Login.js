@@ -37,42 +37,41 @@ function Login() {
     const { name, email, password } = user;
     if (newUser && email && password) {
       createUserWithEmailAndPassword(name, email, password).then((res) => {
-        setUser(res);
-        setLoggedInUser(res);
-        history.replace(from);
+        handleResponse(res, true);
       });
     }
 
     if (!newUser && email && password) {
       signInWithEmailAndPassword(email, password).then((res) => {
-        setUser(res);
-        setLoggedInUser(res);
-        history.replace(from);
+        handleResponse(res, true);
       });
     }
   };
 
   const googleSignIn = () => {
     handleGoogleSignIn().then((res) => {
-      setUser(res);
-      setLoggedInUser(res);
-      history.replace(from);
+      handleResponse(res, true);
     });
   };
 
   const fbLogin = () => {
     handleFbLogin().then((res) => {
-      setUser(res);
-      setLoggedInUser(res);
-      history.replace(from);
+      handleResponse(res, true);
     });
   };
 
   const signOut = () => {
     handleSignOut().then((res) => {
-      setUser(res);
-      setLoggedInUser(res);
+      handleResponse(res, false);
     });
+  };
+
+  const handleResponse = (res, redirect) => {
+    setUser(res);
+    setLoggedInUser(res);
+    if (redirect) {
+      history.replace(from);
+    }
   };
 
   const handleBlur = (e) => {
