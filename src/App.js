@@ -16,9 +16,7 @@ export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      <h3>Email: {loggedInUser.email}</h3>
-
+    <userContext.Provider value={[loggedInUser, setLoggedInUser]}>``
       <Router>
         <Header />
         <Switch>
