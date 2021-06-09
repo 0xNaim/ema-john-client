@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import fakeData from "../../fakeData";
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import {
   getDatabaseCart,
   removeFromDatabaseCart,
-} from "../../utilities/databaseManager";
-import Cart from "../Cart/Cart";
-import ReviewItem from "../ReviewItem/ReviewItem";
+} from '../../utilities/databaseManager';
+import Cart from '../Cart/Cart';
+import ReviewItem from '../ReviewItem/ReviewItem';
 
 const Review = () => {
   const [cart, setCart] = useState([]);
@@ -14,7 +13,7 @@ const Review = () => {
   const history = useHistory();
 
   const handleProceedCheckout = () => {
-    history.push("/shipment");
+    history.push('/shipment');
   };
 
   const removeProduct = (productKey) => {
@@ -26,12 +25,14 @@ const Review = () => {
     // cart
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    const cartProducts = productKeys.map((key) => {
-      const product = fakeData.find((pd) => pd.key === key);
-      product.quantity = savedCart[key];
-      return product;
-    });
-    setCart(cartProducts);
+
+    fetch('http://localhost:4000/productsByKeys', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(productKeys),
+    })
+      .then((res) => res.json())
+      .then((data) => setCart(data));
   }, []);
 
   let thankYou;
@@ -40,8 +41,8 @@ const Review = () => {
     thankYou = <h2>Congratulations! Your order has been placed.</h2>;
   }
   return (
-    <div className="twin-container">
-      <div className="product-container">
+    <div className='twin-container'>
+      <div className='product-container'>
         {cart.map((pd) => (
           <ReviewItem
             product={pd}
@@ -53,9 +54,9 @@ const Review = () => {
         {thankYou}
       </div>
 
-      <div className="cart-container">
+      <div className='cart-container'>
         <Cart cart={cart}>
-          <button onClick={handleProceedCheckout} className="myBtn">
+          <button onClick={handleProceedCheckout} className='myBtn'>
             Proceed Checkout
           </button>
         </Cart>

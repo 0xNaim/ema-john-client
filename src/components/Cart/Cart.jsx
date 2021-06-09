@@ -1,5 +1,5 @@
-import React from "react";
-import "./Cart.css";
+import React from 'react';
+import './Cart.css';
 
 const Cart = (props) => {
   const cart = props.cart;
@@ -7,7 +7,8 @@ const Cart = (props) => {
   let total = 0;
   for (let i = 0; i < cart.length; i++) {
     const product = cart[i];
-    total = total + product.price * product.quantity;
+    console.log(product.price, product.quantity);
+    total = total + product.price * product.quantity || 1;
   }
   // shipping
   let shipping = 0;
@@ -27,8 +28,8 @@ const Cart = (props) => {
   };
 
   return (
-    <div className="cart">
-      <div className="cart-title">
+    <div className='cart'>
+      <div className='cart-title'>
         <h3>Order Summary</h3>
         <p>Items Added: {cart.length}</p>
       </div>
