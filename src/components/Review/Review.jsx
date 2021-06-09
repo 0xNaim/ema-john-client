@@ -26,7 +26,7 @@ const Review = () => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
 
-    fetch('http://localhost:4000/productsByKeys', {
+    fetch('https://ancient-river-47648.herokuapp.com/productsByKeys', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(productKeys),

@@ -15,7 +15,7 @@ const Shipment = () => {
       shipment: data,
     };
 
-    fetch('http://localhost:4000/addOrder', {
+    fetch('https://ancient-river-47648.herokuapp.com/addOrder', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(orderDetails),
@@ -23,9 +23,8 @@ const Shipment = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          processOrder()
+          processOrder();
           alert('Your order placed successfully.');
-
         }
       });
   };
