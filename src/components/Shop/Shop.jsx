@@ -5,6 +5,7 @@ import {
   getDatabaseCart,
 } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
+import Loading from '../Loading/Loading';
 import Product from '../Product/Product';
 import './Shop.css';
 
@@ -52,6 +53,7 @@ const Shop = () => {
   return (
     <div className='twin-container'>
       <div className='product-container'>
+        {products.length === 0 && <Loading />}
         {products.map((product) => (
           <Product
             showAddToCart={true}

@@ -43,13 +43,17 @@ const Review = () => {
   return (
     <div className='twin-container'>
       <div className='product-container'>
-        {cart.map((pd) => (
-          <ReviewItem
-            product={pd}
-            key={pd.key}
-            removeProduct={removeProduct}
-          ></ReviewItem>
-        ))}
+        {cart.length === 0 ? (
+          <h4>No items added</h4>
+        ) : (
+          cart.map((pd) => (
+            <ReviewItem
+              product={pd}
+              key={pd.key}
+              removeProduct={removeProduct}
+            ></ReviewItem>
+          ))
+        )}
 
         {thankYou}
       </div>
