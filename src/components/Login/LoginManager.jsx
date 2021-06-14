@@ -1,6 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import firebaseConfig from "../../firebase.config";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import firebaseConfig from '../../firebase.config';
 
 export const initializeLoginFramework = () => {
   if (firebase.apps.length === 0) {
@@ -22,11 +22,24 @@ export const handleGoogleSignIn = () => {
         photoURL: photoURL,
         success: true,
       };
+      setUserToken();
       return signInUser;
     })
     .catch((err) => {
       const { errorCode, errorMsg } = err;
       console.log(errorCode, errorMsg);
+    });
+};
+
+const setUserToken = () => {
+  firebase
+    .auth()
+    .currentUser.getIdToken(/* forceRefresh */ true)
+    .then(function (idToken) {
+      sessionStorage.setItem('token', idToken);
+    })
+    .catch(function (error) {
+      // Handle error
     });
 };
 
@@ -58,9 +71,9 @@ export const handleSignOut = () => {
     .then((res) => {
       const signOutUser = {
         isSignedIn: false,
-        name: "",
-        email: "",
-        photoURL: "",
+        name: '',
+        email: '',
+        photoURL: '',
         success: false,
       };
       return signOutUser;
@@ -77,7 +90,7 @@ export const createUserWithEmailAndPassword = (name, email, password) => {
     .createUserWithEmailAndPassword(email, password)
     .then((res) => {
       const newUserInfo = res.user;
-      newUserInfo.error = "";
+      newUserInfo.error = '';
       newUserInfo.success = true;
       updateUserName(name);
       return newUserInfo;
@@ -96,7 +109,7 @@ export const signInWithEmailAndPassword = (email, password) => {
     .signInWithEmailAndPassword(email, password)
     .then((res) => {
       const newUserInfo = res.user;
-      newUserInfo.error = "";
+      newUserInfo.error = '';
       newUserInfo.success = true;
       return newUserInfo;
     })
@@ -116,7 +129,7 @@ const updateUserName = (name) => {
       displayName: name,
     })
     .then(() => {
-      console.log("Username updated successfully");
+      console.log('Username updated successfully');
     })
     .catch((error) => {
       console.log(error.message);
